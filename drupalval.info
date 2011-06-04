@@ -1,0 +1,5 @@
+name = DrupalVal
+description = M—dulo de trabajo (pruebas) para aprender a desarrollar m—dulos con Drupal 7.
+package = Sesion DrupalVal
+core = 7.x
+files[] = drupalval.module
