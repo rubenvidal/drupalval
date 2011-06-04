@@ -3,11 +3,16 @@
 
 /**
  * @file
- * A module exemplifying Drupal coding practices and APIs.
+ * M—dulo de trabajo (pruebas) para aprender a desarrollar m—dulos con Drupal 7.
+ * 
+ * El idioma de los comentarios ser‡ el espa–ol, ya que la audiencia del m—dulo en cuesti—n
+ * es que quiera aprender a desarrollar m—dulos de Drupal y que hable espa–ol.
+ * Los textos de UI que se integren en el m—dulo deber’an estar en ingles e ir dentro de 
+ * funci—n t() tal y como funciona el sistema de i18n de Drupal.
  *
- * This module provides a block that lists all of the
- * installed modules. It illustrates coding standards,
- * practices, and API use for Drupal 7.
+ * La idea de este m—dulo es colaborar en el desarrollo de un m—dulo de Drupal 7 
+ * con fines didacticos. De esta manera se podr‡ ver el resultado del trabajo de
+ * otros desarrolladores y comparar soluciones.
  */
 
 /**
@@ -51,3 +56,33 @@ function drupalval_block_view($block_name = '') {
     return $block;
   }
 }
+
+/**
+ * Implementaci—n del hook menu
+ */
+function drupalval_menu() {
+  $items = array();
+  
+  global $user;
+  $myuser_name = $user->name;
+
+  $items['drupalval/pagprueba/%'] = array(
+    'title' => 'Prueba @placeholder', 
+  	'title arguments' => array('@placeholder' => $myuser_name),
+    'page callback' => 'pagprueba',
+  	'page arguments' => array(2), 
+    'access callback' => TRUE,
+  	'type' => MENU_NORMAL_ITEM,
+  	'menu_name' => 'navigation',
+  );
+  
+  return $items;
+}
+
+/**
+ * Callback
+ * Devuelve texto de prueba
+ */
+function pagprueba($myid) {
+	return "dkdjskdjksd " . $myid;
+}	
